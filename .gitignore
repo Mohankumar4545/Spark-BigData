@@ -3,4 +3,7 @@
 *.txt
 __pycache__/
 *.pyc
+.venv/
+.env
 Myvenv/
+.venv/
