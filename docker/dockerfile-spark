@@ -1,0 +1,18 @@
+# Base Spark + Hadoop image
+FROM bitnami/spark:3.3.2
+
+# Set working directory
+WORKDIR /app
+
+# Copy the entire project into container
+COPY . .
+
+# Set environment variable for Python path
+ENV PYTHONPATH=/app
+
+# Install Python dependencies
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+# Default command (can be overridden in docker run)
+CMD ["spark-submit", "--packages", "org.apache.hadoop:hadoop-aws:3.3.2", "SparkScripts/First-s3.py"]
